@@ -49,12 +49,12 @@
         const matrixContainer = document.getElementById('matrix');
         const columns = Math.floor(window.innerWidth / 20);
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+';
-        const customText = "    C    O    L    E    M    A    N                                       C     O    L    E    M    A    N                                ";
+        const customText = "                          C    O    L    E    M    A    N                                 ";
         const fallingChars = [];
         const customTextColumns = new Set();
 
         // Randomly select a few columns to display "COLEMAN"
-        while (customTextColumns.size < Math.floor(columns * 0.01)) {  // 5% of columns dedicated to the name
+        while (customTextColumns.size < Math.floor(columns * 0.04)) {  // 5% of columns dedicated to the name
             customTextColumns.add(Math.floor(Math.random() * columns));
         }
 
