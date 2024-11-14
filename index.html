@@ -1,1 +1,127 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Craig Coleman - Job Seeker</title><style>body{font-family:Arial,sans-serif;line-height:1.6;margin:0;padding:0;background-color:#333;color:#fff}section{width:80%;margin:0 auto;padding:20px;background-color:rgba(255,255,255,0.1);border-radius:10px;box-shadow:0 0 10px rgba(255,255,255,0.1);opacity:0;animation-fill-mode:forwards}article{animation:fadeIn 2s ease-in-out forwards;opacity:0}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}header{text-align:center;background-color:#222;color:#fff;border-top-left-radius:10px;border-top-right-radius:10px;padding-bottom:30px;animation:fadeIn 2s ease-in-out forwards}main{animation:fadeIn 2s ease-in-out 2s forwards}section:nth-child(3n+1){animation:fadeIn 4s ease-in-out 4s forwards}section:nth-child(3n+2){animation:fadeIn 4s ease-in-out 10s forwards}section:nth-child(3n+3){animation:fadeIn 4s ease-in-out 16s forwards}footer{text-align:center;background-color:#222;color:#fff;border-bottom-left-radius:10px;border-bottom-right-radius:10px;padding:10px 0;animation:fadeIn 2s ease-in-out 10s forwards}h1{margin:10px 0}h2{margin-bottom:15px;color:#007bff}article{margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:20px}article:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}ul{padding-left:20px;list-style:none;margin:0;padding:0}li{margin-bottom:8px}</style></head><body><header><h1>Craig Coleman</h1><p>Bournemouth, Dorset, UK</p><p>Email: craig@coleman82.uk</p></header><main><section><h2>Work Experience</h2><article><h3>Bourne Steel.<ul>(April 2023 to September 2024)</h3><ul><li>CNC Setter / Programmer of a Vortman V310_XPR300 plasma cutter with drill heads cutting steel plates.</li><li>CNC nesting and programming with SigmaNEST.</li><li>Arc Welding.</li><li>Punch press.</li><li>Operation of overhead cranes, forklift, and sideloader.</li></ul></article><article><h3>Aim altitude / Avic cabin systems.<ul>(December 2021 to March 2023)</h3><ul><li>Setting and operating CNC machines to produce aluminium extrusions and GRP products within tight tolerances.</li><li>CNC programming using FomCam, Homag, and Fanuc routers.</li><li>4-axis milling and using a circular saw.</li></ul></article><article><h3>MSA Manufacturing.<ul>(September 2021 to November 2021)</h3><ul><li>Setting and operating 5-axis CMS Athena CNC router for cutting plywood and composite materials.</li><li>Using power tools, including nail guns, for production purposes.</li></ul></article><article><h3>MSA Foams.<ul>(October 2003 to August 2021)</h3><ul><li>Set up and programmed CNC machines including water jet, knife cutter, hydraulic press, vacuum forming, and laser engraver.</li><li>Operated 3-axis CNC machining centers with various controls such as Fagor, Bosch, Osai, Fanuc, and AMC.</li><li>Designed and programmed using Alphacam software.</li></ul></article><article><h3>Loadpoint Bearings.<ul>(August 2000 to September 2003)</h3><ul><li>Conducted cylindrical grinding, surface grinding, and bore honing processes.</li><li>Prepared raw materials for production.</li></ul></article></section><section><h2>Skills</h2><ul><li>CAD Design</li><li>CNC Waterjet</li><li>CNC Router and Mills</li><li>FANUC</li><li>Alphacam</li><li>CNC programming</li><li>Web design</li></ul></section><section><h2>Certifications and Licences</h2><ul><li>Overhead crane (April 2023 to Present)</li><li>Side loader license</li><li>Full UK driving licence (0 points)</li><li>Counter balance forklift licence B1</li><li>Working at Height Certificate (April 2023 to April 2026)</li></ul></section></main><footer> <a href="mailto:craig@coleman82.uk" style="text-decoration: none; color: #fff; border: 1px solid #007bff; padding: 5px; background-color: #007bff; border-radius: 4px;">References available upon request</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Style Animation - Craig Coleman</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .matrix-char, .matrix-ghost {
+            position: absolute;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+        }
+
+        .matrix-ghost {
+            opacity: 0.6;
+            transition: opacity 1s linear;
+        }
+
+        .highlight {
+            color: #FFFF00;  /* Brighter color for emphasis */
+            font-size: 40px; /* Slightly larger font size */
+        }
+    </style>
+</head>
+<body>
+    <div id="matrix"></div>
+
+    <script>
+        const matrixContainer = document.getElementById('matrix');
+        const columns = Math.floor(window.innerWidth / 20);
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+';
+        const customText = "    C  R  A  I  G    C  O  L  E  M  A  N    ";
+        const fallingChars = [];
+        const customTextColumns = new Set();
+
+        // Randomly select a few columns to display "CRAIG COLEMAN"
+        while (customTextColumns.size < Math.floor(columns * 0.2)) {  // 20% of columns dedicated to the name
+            customTextColumns.add(Math.floor(Math.random() * columns));
+        }
+
+        function createMatrix() {
+            for (let i = 0; i < columns; i++) {
+                let charElement = document.createElement('div');
+                charElement.classList.add('matrix-char');
+                matrixContainer.appendChild(charElement);
+
+                charElement.style.left = `${i * 20}px`;
+                charElement.style.top = `${Math.random() * window.innerHeight}px`;
+
+                fallingChars.push({
+                    element: charElement,
+                    speed: Math.random() * 10 + 5,
+                    charPosition: Math.floor(Math.random() * chars.length),
+                    isCustomText: customTextColumns.has(i)  // Mark columns dedicated to "Craig Coleman"
+                });
+            }
+        }
+
+        function updateMatrix() {
+            fallingChars.forEach(fallingChar => {
+                let charElement = fallingChar.element;
+                let speed = fallingChar.speed;
+                let currentTop = parseInt(charElement.style.top.replace('px', ''));
+                let newTop = currentTop + speed;
+
+                if (newTop > window.innerHeight) {
+                    newTop = -20;
+                    fallingChar.charPosition = Math.floor(Math.random() * chars.length);
+                }
+
+                // Create a ghost element at the previous position
+                let ghostElement = charElement.cloneNode(true);
+                ghostElement.classList.add('matrix-ghost');
+                ghostElement.style.top = `${currentTop}px`;
+                ghostElement.style.opacity = 0.6;
+                matrixContainer.appendChild(ghostElement);
+
+                setTimeout(() => {
+                    ghostElement.style.opacity = 0;
+                    setTimeout(() => ghostElement.remove(), 1000);
+                }, 50);
+
+                // Display "Craig Coleman" in specific columns
+                if (fallingChar.isCustomText) {
+                    charElement.classList.add('highlight'); // Apply highlight style
+                    charElement.textContent = customText[fallingChar.charPosition % customText.length];
+                    fallingChar.charPosition++;
+                } else {
+                    charElement.classList.remove('highlight');
+                    charElement.textContent = chars[fallingChar.charPosition];
+                    fallingChar.charPosition = (fallingChar.charPosition + 1) % chars.length;
+                }
+                
+                charElement.style.top = `${newTop}px`;
+            });
+        }
+
+        function initMatrix() {
+            createMatrix();
+            setInterval(updateMatrix, 30);
+        }
+
+        document.addEventListener('DOMContentLoaded', initMatrix);
+    </script>
+</body>
+</html>
+
