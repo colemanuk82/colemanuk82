@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Coleman </title>
+    <title>Coleman</title>
     <style>
         body, html {
             margin: 0;
@@ -47,14 +47,15 @@
 
     <script>
         const matrixContainer = document.getElementById('matrix');
-        const columns = Math.floor(window.innerWidth / 20);
+        const columnSpacing = 40; // Increased spacing between columns
+        const columns = Math.floor(window.innerWidth / columnSpacing); // Use columnSpacing here
         const chars = '';
-        const customText = "                           C    O    L    E    M    A    N                            ";
+        const customText = "                C    O    L    E    M    A    N                         ";
         const fallingChars = [];
         const customTextColumns = new Set();
 
         // Randomly select a few columns to display "COLEMAN"
-        while (customTextColumns.size < Math.floor(columns * 0.5)) {  // 20% of columns dedicated to the name
+        while (customTextColumns.size < Math.floor(columns * 0.5)) { // 20% of columns dedicated to the name
             customTextColumns.add(Math.floor(Math.random() * columns));
         }
 
@@ -64,14 +65,14 @@
                 charElement.classList.add('matrix-char');
                 matrixContainer.appendChild(charElement);
 
-                charElement.style.left = `${i * 20}px`;
+                charElement.style.left = `${i * columnSpacing}px`; // Updated column spacing
                 charElement.style.top = `${Math.random() * window.innerHeight}px`;
 
                 fallingChars.push({
                     element: charElement,
                     speed: Math.random() * 10 + 5,
                     charPosition: Math.floor(Math.random() * chars.length),
-                    isCustomText: customTextColumns.has(i)  // Mark columns dedicated to "Craig Coleman"
+                    isCustomText: customTextColumns.has(i) // Mark columns dedicated to "COLEMAN"
                 });
             }
         }
@@ -100,7 +101,7 @@
                     setTimeout(() => ghostElement.remove(), 1000);
                 }, 50);
 
-                // Display "Craig Coleman" in specific columns
+                // Display "COLEMAN" in specific columns
                 if (fallingChar.isCustomText) {
                     charElement.classList.add('highlight'); // Apply highlight style
                     charElement.textContent = customText[fallingChar.charPosition % customText.length];
@@ -110,7 +111,7 @@
                     charElement.textContent = chars[fallingChar.charPosition];
                     fallingChar.charPosition = (fallingChar.charPosition + 1) % chars.length;
                 }
-                
+
                 charElement.style.top = `${newTop}px`;
             });
         }
@@ -124,4 +125,3 @@
     </script>
 </body>
 </html>
-
