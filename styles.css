@@ -802,6 +802,10 @@ h2 {
   color: var(--plum);
 }
 
+.welcome-scriptures-link {
+  margin-top: 22px;
+}
+
 .principles-section {
   display: grid;
   grid-template-columns: minmax(210px, 0.72fr) 1.8fr;
@@ -926,6 +930,506 @@ h2 {
 
 .principle-card a span {
   font-size: 1rem;
+}
+
+.scriptures-section {
+  position: relative;
+  padding: 112px max(8vw, calc((100vw - var(--max-width)) / 2 + 8vw)) 122px;
+  color: var(--paper);
+  background-color: var(--plum-deep);
+  background-image:
+    radial-gradient(circle at 85% 22%, rgba(231, 198, 111, 0.09) 0 130px, transparent 132px),
+    radial-gradient(circle at 12% 18%, rgba(231, 198, 111, 0.55) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 8%, rgba(231, 198, 111, 0.35) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 90% 62%, rgba(231, 198, 111, 0.4) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 32% 88%, rgba(231, 198, 111, 0.3) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 55% 42%, rgba(231, 198, 111, 0.28) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 22% 52%, rgba(231, 198, 111, 0.25) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 64% 92%, rgba(231, 198, 111, 0.38) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 45% 14%, rgba(231, 198, 111, 0.22) 0 1px, transparent 1.5px);
+  background-size: auto, 220px 220px, 260px 260px, 300px 300px, 240px 240px, 200px 200px, 280px 280px, 320px 320px, 250px 250px;
+  border-top: 1px solid rgba(231, 198, 111, 0.26);
+}
+
+.scriptures-heading {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 0.62fr);
+  gap: 6vw;
+  align-items: end;
+}
+
+.scriptures-heading h2 {
+  color: var(--paper);
+  font-size: clamp(3.4rem, 5.5vw, 5.5rem);
+}
+
+.scriptures-heading h2 em {
+  color: var(--gold-light);
+}
+
+.scriptures-heading .eyebrow {
+  margin-bottom: 22px;
+}
+
+.scriptures-intro {
+  max-width: 380px;
+  margin: 0 0 6px;
+  color: #c7b9b5;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.scriptures-reader {
+  position: relative;
+  margin-top: 62px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgba(231, 198, 111, 0.55);
+  box-shadow: 18px 19px 0 rgba(15, 10, 12, 0.24);
+}
+
+.scriptures-reader::before,
+.scriptures-reader::after {
+  position: absolute;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  border-color: var(--gold);
+  border-style: solid;
+  content: "";
+  pointer-events: none;
+}
+
+.scriptures-reader::before {
+  top: -2px;
+  left: -2px;
+  border-width: 2px 0 0 2px;
+}
+
+.scriptures-reader::after {
+  right: -2px;
+  bottom: -2px;
+  border-width: 0 2px 2px 0;
+}
+
+.book-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 14px 18px;
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line);
+}
+
+.book-tab {
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  color: var(--ink-soft);
+  background: transparent;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.book-tab:hover {
+  border-color: var(--gold);
+  color: var(--plum);
+}
+
+.book-tab.is-active {
+  color: var(--paper);
+  background: var(--plum);
+}
+
+.book-panel {
+  display: none;
+  padding: 46px clamp(24px, 5vw, 64px) 40px;
+}
+
+.book-panel.is-active {
+  display: block;
+}
+
+.book-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.book-number {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 4.4rem;
+  font-weight: 600;
+  line-height: 0.9;
+}
+
+.book-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.book-header h3 {
+  margin: 0 0 12px;
+  color: var(--plum);
+  font-size: clamp(2.1rem, 3.4vw, 3rem);
+  line-height: 1;
+}
+
+.book-epigraph {
+  max-width: 540px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.book-text {
+  column-count: 2;
+  column-gap: 48px;
+}
+
+.book-verse {
+  margin: 0 0 17px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.07rem;
+  line-height: 1.66;
+  break-inside: avoid;
+}
+
+.verse-num {
+  display: inline-block;
+  margin-right: 7px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  vertical-align: 2px;
+}
+
+.book-panel.is-active .book-text .book-verse:first-child::first-letter {
+  float: left;
+  margin: 3px 9px 0 0;
+  color: var(--plum);
+  font-family: var(--serif);
+  font-size: 3.4em;
+  font-weight: 600;
+  line-height: 0.82;
+}
+
+.book-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  color: var(--ink-soft);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.book-end::before,
+.book-end::after {
+  width: 44px;
+  height: 1px;
+  background: var(--gold);
+  content: "";
+}
+
+.book-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+}
+
+.book-pager-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  color: var(--plum);
+  background: transparent;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.book-pager-btn span {
+  font-size: 1rem;
+  line-height: 0;
+}
+
+.book-pager-btn:hover {
+  color: var(--paper);
+  background: var(--plum);
+}
+
+.book-pager-label {
+  color: var(--ink-soft);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.scriptures-coda {
+  margin: 38px 0 0;
+  color: #bdaea8;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.doctrine-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 118px 8vw 124px;
+  border-top: 1px solid var(--line);
+}
+
+.doctrine-heading {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 0.62fr);
+  gap: 6vw;
+  align-items: end;
+  margin-bottom: 52px;
+}
+
+.doctrine-heading h2 {
+  font-size: clamp(3.2rem, 5vw, 5rem);
+}
+
+.doctrine-heading h2 em {
+  color: var(--gold);
+}
+
+.doctrine-intro {
+  max-width: 380px;
+  margin: 0 0 6px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.doctrine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.doctrine-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 316px;
+  padding: 27px 23px 22px;
+  transition: transform 180ms ease;
+}
+
+.doctrine-card:hover {
+  transform: translateY(-7px);
+}
+
+.doctrine-symbol {
+  min-height: 60px;
+  color: var(--plum);
+  font-family: var(--serif);
+  font-size: 3.1rem;
+  line-height: 0.8;
+}
+
+.card-blue .doctrine-symbol,
+.card-coral .doctrine-symbol {
+  color: var(--gold-light);
+}
+
+.doctrine-index {
+  position: absolute;
+  top: 29px;
+  right: 22px;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+}
+
+.doctrine-card h3 {
+  margin: 0 0 11px;
+  font-size: 2rem;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+
+.doctrine-card p {
+  margin: 0 0 15px;
+  font-size: 0.79rem;
+  line-height: 1.56;
+  opacity: 0.86;
+}
+
+.doctrine-ref {
+  margin-bottom: 14px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.doctrine-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: auto;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.doctrine-link span {
+  font-size: 1rem;
+  line-height: 0;
+  transition: transform 180ms ease;
+}
+
+.doctrine-link:hover span {
+  transform: translateX(4px);
+}
+
+.verse-band {
+  padding: 64px max(8vw, calc((100vw - var(--max-width)) / 2 + 8vw)) 70px;
+  background-color: var(--paper-deep);
+  background-image: radial-gradient(circle at 50% 0%, rgba(199, 155, 61, 0.16) 0 1px, transparent 1px);
+  background-size: 26px 26px;
+  border-top: 1px solid rgba(199, 155, 61, 0.38);
+  border-bottom: 1px solid rgba(199, 155, 61, 0.38);
+}
+
+.verse-eyebrow {
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.verse-slideshow {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: clamp(14px, 3vw, 34px);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.verse-stage {
+  min-width: 0;
+  text-align: center;
+}
+
+.verse-slide {
+  margin: 0;
+  transition: opacity 260ms ease;
+}
+
+.verse-slide.is-fading {
+  opacity: 0;
+}
+
+.verse-text {
+  margin: 0;
+  color: var(--plum);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.1vw, 2.3rem);
+  font-style: italic;
+  line-height: 1.32;
+}
+
+.verse-citation {
+  margin: 20px 0 0;
+  color: var(--gold);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.verse-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(29, 24, 24, 0.25);
+  border-radius: 50%;
+  color: var(--plum);
+  background: transparent;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.verse-nav span {
+  line-height: 0;
+}
+
+.verse-nav:hover {
+  color: var(--paper);
+  background: var(--plum);
+  border-color: var(--plum);
+}
+
+.verse-progress {
+  width: 150px;
+  height: 1px;
+  margin: 30px auto 0;
+  background: rgba(29, 24, 24, 0.16);
+  overflow: hidden;
+}
+
+.verse-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--gold);
+  animation: verse-progress-fill 7s linear forwards;
+}
+
+@keyframes verse-progress-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .gather-section {
@@ -2090,6 +2594,7 @@ address {
   .welcome-section,
   .parish-gallery-section,
   .principles-section,
+  .doctrine-section,
   .events-section,
   .impact-section,
   .visit-section,
@@ -2100,7 +2605,9 @@ address {
     padding-left: 0;
   }
 
-  .gather-section {
+  .gather-section,
+  .scriptures-section,
+  .verse-band {
     padding-right: max(8vw, calc((100vw - var(--max-width)) / 2 + 8vw));
     padding-left: max(8vw, calc((100vw - var(--max-width)) / 2 + 8vw));
   }
@@ -2159,9 +2666,34 @@ address {
     padding-left: 6vw;
   }
 
-  .gather-section {
+  .gather-section,
+  .scriptures-section,
+  .verse-band {
     padding-right: 6vw;
     padding-left: 6vw;
+  }
+
+  .scriptures-heading {
+    grid-template-columns: 1fr minmax(240px, 0.7fr);
+    gap: 4vw;
+  }
+
+  .book-text {
+    column-count: 1;
+  }
+
+  .doctrine-section {
+    padding-right: 6vw;
+    padding-left: 6vw;
+  }
+
+  .doctrine-heading {
+    grid-template-columns: 1fr minmax(240px, 0.7fr);
+    gap: 4vw;
+  }
+
+  .doctrine-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .principle-card {
@@ -2561,6 +3093,141 @@ address {
 
   .principle-card p {
     max-width: 265px;
+  }
+
+  .scriptures-section {
+    padding: 88px 25px 96px;
+    background-size: auto, 160px 160px, 190px 190px, 220px 220px, 180px 180px, 150px 150px, 200px 200px, 240px 240px, 180px 180px;
+  }
+
+  .scriptures-heading {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .scriptures-heading h2 {
+    font-size: clamp(3.3rem, 15vw, 4.8rem);
+  }
+
+  .scriptures-intro {
+    margin-top: 30px;
+    font-size: 0.87rem;
+  }
+
+  .scriptures-reader {
+    margin-top: 44px;
+    box-shadow: 9px 10px 0 rgba(15, 10, 12, 0.22);
+  }
+
+  .book-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 12px 14px;
+    scrollbar-width: none;
+  }
+
+  .book-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .book-tab {
+    flex: 0 0 auto;
+  }
+
+  .book-panel {
+    padding: 34px 20px 30px;
+  }
+
+  .book-header {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 26px;
+    padding-bottom: 22px;
+  }
+
+  .book-number {
+    font-size: 3.2rem;
+  }
+
+  .book-epigraph {
+    font-size: 1rem;
+  }
+
+  .book-verse {
+    font-size: 1.02rem;
+  }
+
+  .book-pager {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .book-pager-label {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .doctrine-section {
+    padding: 92px 25px 98px;
+  }
+
+  .doctrine-heading {
+    display: block;
+    margin-bottom: 38px;
+  }
+
+  .doctrine-heading h2 {
+    font-size: clamp(3.15rem, 14vw, 4.5rem);
+  }
+
+  .doctrine-intro {
+    margin-top: 30px;
+    font-size: 0.87rem;
+  }
+
+  .doctrine-grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .doctrine-card {
+    min-height: 0;
+  }
+
+  .doctrine-card p {
+    max-width: 300px;
+  }
+
+  .verse-band {
+    padding: 56px 25px 60px;
+  }
+
+  .verse-eyebrow {
+    margin-bottom: 26px;
+  }
+
+  .verse-slideshow {
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    gap: 9px;
+  }
+
+  .verse-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .verse-text {
+    font-size: 1.32rem;
+  }
+
+  .verse-citation {
+    margin-top: 17px;
+  }
+
+  .verse-progress {
+    margin-top: 26px;
   }
 
   .gather-section {

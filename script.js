@@ -82,3 +82,162 @@ if (mailingForm && formNote) {
     mailingForm.reset();
   });
 }
+
+const scriptureReader = document.querySelector('.scriptures-reader');
+
+if (scriptureReader) {
+  const bookTabs = [...scriptureReader.querySelectorAll('.book-tab')];
+  const bookPanels = [...scriptureReader.querySelectorAll('.book-panel')];
+  const pagerLabel = scriptureReader.querySelector('.book-pager-label');
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+  let currentBook = 0;
+
+  const activateBook = (index) => {
+    currentBook = (index + bookTabs.length) % bookTabs.length;
+
+    bookTabs.forEach((tab, i) => {
+      const isActive = i === currentBook;
+      tab.classList.toggle('is-active', isActive);
+      tab.setAttribute('aria-selected', String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      bookPanels[i].hidden = !isActive;
+      bookPanels[i].classList.toggle('is-active', isActive);
+    });
+
+    if (pagerLabel) {
+      pagerLabel.textContent = `${romanNumerals[currentBook]} of ${romanNumerals.length}`;
+    }
+  };
+
+  bookTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activateBook(i));
+
+    tab.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      const nextIndex = event.key === 'ArrowRight' ? currentBook + 1 : currentBook - 1;
+      const target = (nextIndex + bookTabs.length) % bookTabs.length;
+      activateBook(target);
+      bookTabs[target].focus();
+    });
+  });
+
+  scriptureReader.querySelectorAll('.book-pager-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      const direction = button.dataset.dir === 'next' ? 1 : -1;
+      activateBook(currentBook + direction);
+      bookTabs[currentBook].focus();
+    });
+  });
+
+  window.selectBook = (name) => {
+    const index = bookTabs.findIndex((tab) => tab.dataset.book === name);
+    if (index > -1) activateBook(index);
+  };
+
+  activateBook(0);
+}
+
+const verseBand = document.querySelector('.verse-band');
+
+if (verseBand) {
+  const slide = verseBand.querySelector('.verse-slide');
+  const verseText = slide.querySelector('.verse-text');
+  const verseCitation = slide.querySelector('.verse-citation');
+  const progressBar = verseBand.querySelector('.verse-progress span');
+  const versePool = [...document.querySelectorAll('.book-panel')].flatMap((panel) => {
+    const book = (panel.querySelector('.book-header h3') || {}).textContent?.trim() || 'The Book';
+    return [...panel.querySelectorAll('.book-verse')].map((verse) => {
+      const number = (verse.querySelector('.verse-num') || {}).textContent?.trim() || '1';
+      const clone = verse.cloneNode(true);
+      clone.querySelector('.verse-num')?.remove();
+      return {
+        text: clone.textContent.replace(/\s+/g, ' ').trim(),
+        citation: `${book}, 1:${number}`,
+      };
+    });
+  });
+
+  const ROTATION_MS = 7000;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let currentIndex = -1;
+  let fadeToken = 0;
+  let timer = null;
+
+  const restartProgress = () => {
+    if (!progressBar) return;
+    progressBar.style.animation = 'none';
+    void progressBar.offsetWidth;
+    progressBar.style.animation = '';
+  };
+
+  const pickIndex = () => {
+    if (versePool.length < 2) return 0;
+    let index = Math.floor(Math.random() * versePool.length);
+    while (index === currentIndex) {
+      index = Math.floor(Math.random() * versePool.length);
+    }
+    return index;
+  };
+
+  const showVerse = (index) => {
+    const verse = versePool[index];
+    if (!verse) return;
+    const token = ++fadeToken;
+    currentIndex = index;
+    slide.classList.add('is-fading');
+    window.setTimeout(() => {
+      if (token !== fadeToken) return;
+      verseText.textContent = `\u201C${verse.text}\u201D`;
+      verseCitation.textContent = verse.citation;
+      slide.classList.remove('is-fading');
+      restartProgress();
+    }, reducedMotion ? 0 : 260);
+  };
+
+  const startRotation = () => {
+    if (timer) return;
+    timer = window.setInterval(() => showVerse(pickIndex()), ROTATION_MS);
+  };
+
+  const stopRotation = () => {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  if (versePool.length) {
+    showVerse(Math.floor(Math.random() * versePool.length));
+    startRotation();
+  }
+
+  verseBand.addEventListener('mouseenter', stopRotation);
+  verseBand.addEventListener('mouseleave', startRotation);
+  verseBand.addEventListener('focusin', stopRotation);
+  verseBand.addEventListener('focusout', startRotation);
+
+  verseBand.querySelector('.verse-prev')?.addEventListener('click', () => {
+    stopRotation();
+    showVerse(pickIndex());
+    startRotation();
+  });
+
+  verseBand.querySelector('.verse-next')?.addEventListener('click', () => {
+    stopRotation();
+    showVerse(pickIndex());
+    startRotation();
+  });
+}
+
+document.querySelectorAll('.doctrine-link').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (window.selectBook) window.selectBook(link.dataset.book);
+    const target = document.getElementById('scriptures');
+    if (target) {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    }
+  });
+});

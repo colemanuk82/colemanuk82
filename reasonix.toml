@@ -1,0 +1,2 @@
+[permissions]
+allow = ["Bash=grep -n \"^\\.\\|^/\\*\\|^@media\" styles.css | sed -n '120,260p'", "Bash=grep -n \"^\\.\\|^/\\*\\|^@media\" styles.css | sed -n '260,400p'"]
