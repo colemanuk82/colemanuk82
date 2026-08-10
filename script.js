@@ -89,7 +89,7 @@ if (scriptureReader) {
   const bookTabs = [...scriptureReader.querySelectorAll('.book-tab')];
   const bookPanels = [...scriptureReader.querySelectorAll('.book-panel')];
   const pagerLabel = scriptureReader.querySelector('.book-pager-label');
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII'];
   let currentBook = 0;
 
   const activateBook = (index) => {
