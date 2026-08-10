@@ -25,9 +25,46 @@ if (menuToggle && primaryNav) {
 
   navLinks.forEach((link) => link.addEventListener('click', closeMenu));
 
+  document.addEventListener('click', (event) => {
+    if (!primaryNav.contains(event.target) && !menuToggle.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
+}
+
+const sectionLinks = [...navLinks].filter((link) => link.hash && document.getElementById(link.hash.slice(1)));
+
+if (sectionLinks.length && 'IntersectionObserver' in window) {
+  const visibleSections = new Map();
+  const sections = sectionLinks.map((link) => document.getElementById(link.hash.slice(1)));
+
+  const updateActiveLink = () => {
+    const currentSection = [...visibleSections.entries()].sort((a, b) => a[1] - b[1])[0]?.[0];
+
+    if (!currentSection) return;
+
+    navLinks.forEach((link) => {
+      link.classList.toggle('active', link.hash === `#${currentSection}`);
+    });
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        visibleSections.set(entry.target.id, entry.boundingClientRect.top);
+      } else {
+        visibleSections.delete(entry.target.id);
+      }
+    });
+
+    updateActiveLink();
+  }, { rootMargin: '-24% 0px -60% 0px' });
+
+  sections.forEach((section) => sectionObserver.observe(section));
 }
 
 if (mailingForm && formNote) {

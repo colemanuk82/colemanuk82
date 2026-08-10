@@ -1044,6 +1044,371 @@ h2 {
   font-size: 0.73rem;
 }
 
+.events-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 132px 8vw 140px;
+  border-top: 1px solid var(--line);
+  background: var(--paper-deep);
+}
+
+.events-heading {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 10%;
+  align-items: end;
+  margin-bottom: 54px;
+}
+
+.events-heading h2 {
+  font-size: clamp(3.4rem, 5.8vw, 5.6rem);
+}
+
+.events-heading-note {
+  max-width: 390px;
+  margin-bottom: 5px;
+}
+
+.events-heading-note p {
+  margin-bottom: 21px;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  line-height: 1.78;
+}
+
+.section-stamp {
+  display: inline-block;
+  padding-top: 11px;
+  border-top: 1px solid var(--gold);
+  color: var(--sea-deep);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.events-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: 26px;
+  align-items: stretch;
+}
+
+.event-feature {
+  display: grid;
+  grid-template-columns: 122px 1fr;
+  gap: 26px;
+  padding: 32px 30px 31px;
+  color: var(--paper);
+  background: var(--plum);
+  box-shadow: 14px 15px 0 rgba(55, 35, 41, 0.12);
+}
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  border-right: 1px solid rgba(243, 238, 228, 0.28);
+  text-align: center;
+}
+
+.event-date span,
+.event-row-date span {
+  color: var(--gold-light);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.event-date strong {
+  margin: 7px 0 4px;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 5.25rem;
+  font-weight: 600;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.event-type {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--sea-deep);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.event-feature .event-type {
+  color: var(--gold-light);
+}
+
+.event-feature h3,
+.event-row h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+}
+
+.event-feature h3 {
+  max-width: 310px;
+  margin-bottom: 18px;
+  color: var(--paper);
+  font-size: clamp(2.3rem, 3.8vw, 3.7rem);
+}
+
+.event-feature p {
+  max-width: 345px;
+  margin-bottom: 24px;
+  color: #d4c7c0;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-bottom: 25px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(243, 238, 228, 0.26);
+  border-bottom: 1px solid rgba(243, 238, 228, 0.26);
+  color: #bdaea8;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 20px;
+  padding: 27px 0 25px;
+  border-bottom: 1px solid var(--line);
+}
+
+.event-row-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.event-row-date strong {
+  margin-top: 5px;
+  color: var(--plum);
+  font-family: var(--serif);
+  font-size: 3.55rem;
+  font-weight: 600;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.event-row-copy .event-type {
+  margin-bottom: 10px;
+}
+
+.event-row h3 {
+  max-width: 310px;
+  margin-bottom: 10px;
+  color: var(--plum);
+  font-size: 2rem;
+}
+
+.event-row p {
+  max-width: 350px;
+  margin-bottom: 13px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.event-row .event-meta {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #887b72;
+  font-size: 0.58rem;
+}
+
+.impact-section {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  gap: 8vw;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 86px 8vw 92px;
+  color: var(--paper);
+  background: var(--sea-deep);
+}
+
+.impact-image-wrap {
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  background: var(--sand);
+  box-shadow: 14px 15px 0 rgba(29, 24, 24, 0.18);
+  transform: rotate(-1.2deg);
+}
+
+.impact-image-wrap::after {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(231, 198, 111, 0.74);
+  content: "";
+  pointer-events: none;
+}
+
+.impact-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  filter: saturate(0.84) contrast(1.05);
+}
+
+.impact-image-label {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1;
+  padding: 7px 9px;
+  color: var(--plum);
+  background: var(--gold-light);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.impact-content {
+  align-self: center;
+  max-width: 560px;
+}
+
+.impact-content h2 {
+  color: var(--paper);
+  font-size: clamp(3.4rem, 5.5vw, 5.5rem);
+}
+
+.impact-content h2 em {
+  color: var(--gold-light);
+}
+
+.impact-intro {
+  max-width: 455px;
+  margin: 28px 0 14px;
+  color: #c4d6d4;
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.impact-note {
+  margin-bottom: 29px;
+  color: #aac1bf;
+  font-size: 0.61rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid rgba(243, 238, 228, 0.27);
+}
+
+.impact-stat {
+  padding: 18px 18px 18px 0;
+  border-bottom: 1px solid rgba(243, 238, 228, 0.27);
+}
+
+.impact-stat:nth-child(even) {
+  padding-right: 0;
+  padding-left: 20px;
+  border-left: 1px solid rgba(243, 238, 228, 0.27);
+}
+
+.impact-stat strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.impact-stat span {
+  display: block;
+  max-width: 145px;
+  color: #c4d6d4;
+  font-size: 0.67rem;
+  line-height: 1.4;
+}
+
+.impact-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: end;
+  margin-top: 25px;
+}
+
+.impact-progress {
+  max-width: 310px;
+}
+
+.impact-progress-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--paper);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.impact-progress-heading strong {
+  color: var(--gold-light);
+}
+
+.impact-bar {
+  height: 7px;
+  margin: 11px 0 8px;
+  background: rgba(243, 238, 228, 0.2);
+}
+
+.impact-bar span {
+  display: block;
+  width: 71%;
+  height: 100%;
+  background: var(--gold-light);
+}
+
+.impact-progress > span {
+  color: #aac1bf;
+  font-size: 0.66rem;
+}
+
+.impact-link {
+  align-self: end;
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  white-space: nowrap;
+}
+
 .visit-section {
   display: grid;
   grid-template-columns: minmax(320px, 0.95fr) minmax(400px, 1.05fr);
@@ -1348,8 +1713,9 @@ address {
 }
 
 .note-card-image img {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 181px;
   object-fit: cover;
   filter: saturate(0.86) contrast(1.04);
   transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -1724,6 +2090,8 @@ address {
   .welcome-section,
   .parish-gallery-section,
   .principles-section,
+  .events-section,
+  .impact-section,
   .visit-section,
   .notes-section,
   .mailing-section,
@@ -1739,6 +2107,19 @@ address {
 }
 
 @media (max-width: 900px) {
+  .primary-nav {
+    gap: clamp(14px, 2.2vw, 24px);
+  }
+
+  .nav-link {
+    font-size: 0.65rem;
+  }
+
+  .nav-link-button {
+    gap: 7px;
+    padding: 10px 12px;
+  }
+
   .hero-section {
     grid-template-columns: 0.9fr 1.1fr;
     padding-top: 28px;
@@ -1762,6 +2143,8 @@ address {
 
   .welcome-section,
   .parish-gallery-section,
+  .events-section,
+  .impact-section,
   .visit-section,
   .notes-section,
   .mailing-section,
@@ -1792,6 +2175,21 @@ address {
 
   .parish-gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .events-layout {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+
+  .event-feature {
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .impact-section {
+    gap: 5vw;
   }
 
   .mailing-section {
@@ -2012,6 +2410,92 @@ address {
     gap: 38px;
   }
 
+  .events-section {
+    padding: 92px 25px 98px;
+  }
+
+  .events-heading {
+    display: block;
+    margin-bottom: 41px;
+  }
+
+  .events-heading > div:first-child {
+    margin-bottom: 38px;
+  }
+
+  .events-heading h2 {
+    font-size: clamp(3.4rem, 15vw, 5rem);
+  }
+
+  .events-layout {
+    display: block;
+  }
+
+  .event-feature {
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    padding: 25px 20px 26px;
+    box-shadow: 9px 10px 0 rgba(55, 35, 41, 0.12);
+  }
+
+  .event-date strong {
+    font-size: 3.8rem;
+  }
+
+  .event-feature h3 {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  .event-feature .event-meta {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .event-list {
+    margin-top: 37px;
+  }
+
+  .event-row {
+    grid-template-columns: 66px 1fr;
+    gap: 16px;
+    padding: 23px 0;
+  }
+
+  .event-row h3 {
+    font-size: 1.8rem;
+  }
+
+  .impact-section {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    padding: 76px 25px 84px;
+  }
+
+  .impact-image-wrap {
+    align-self: stretch;
+  }
+
+  .impact-image-wrap img {
+    height: 300px;
+  }
+
+  .impact-content h2 {
+    font-size: clamp(3.25rem, 15vw, 4.8rem);
+  }
+
+  .impact-footer {
+    display: block;
+  }
+
+  .impact-progress {
+    max-width: none;
+  }
+
+  .impact-link {
+    margin-top: 28px;
+  }
+
   .parish-photo-portrait .parish-photo-frame,
   .parish-photo-group .parish-photo-frame {
     aspect-ratio: auto;
@@ -2171,6 +2655,10 @@ address {
 
   .note-card-visual {
     min-height: 142px;
+  }
+
+  .note-card-image img {
+    height: 142px;
   }
 
   .note-card-body {
