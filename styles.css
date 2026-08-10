@@ -1420,7 +1420,7 @@ h2 {
   width: 0;
   height: 100%;
   background: var(--gold);
-  animation: verse-progress-fill 7s linear forwards;
+  animation: verse-progress-fill 20s linear forwards;
 }
 
 @keyframes verse-progress-fill {
@@ -3120,18 +3120,16 @@ address {
   }
 
   .book-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 12px 14px;
-    scrollbar-width: none;
-  }
-
-  .book-tabs::-webkit-scrollbar {
-    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px 12px;
   }
 
   .book-tab {
     flex: 0 0 auto;
+    padding: 9px 12px;
+    font-size: 0.59rem;
+    letter-spacing: 0.08em;
   }
 
   .book-panel {

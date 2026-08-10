@@ -158,7 +158,7 @@ if (verseBand) {
     });
   });
 
-  const ROTATION_MS = 7000;
+  const ROTATION_MS = 20000;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let currentIndex = -1;
   let fadeToken = 0;
