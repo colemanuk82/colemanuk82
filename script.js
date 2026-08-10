@@ -158,7 +158,12 @@ if (verseBand) {
     });
   });
 
-  const ROTATION_MS = 20000;
+  const mobileQuery = window.matchMedia('(max-width: 700px)');
+  const ROTATION_MS = mobileQuery.matches ? 40000 : 20000;
+
+  if (progressBar) {
+    verseBand.style.setProperty('--verse-duration', `${ROTATION_MS}ms`);
+  }
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let currentIndex = -1;
   let fadeToken = 0;

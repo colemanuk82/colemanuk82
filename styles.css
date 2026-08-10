@@ -1420,7 +1420,7 @@ h2 {
   width: 0;
   height: 100%;
   background: var(--gold);
-  animation: verse-progress-fill 20s linear forwards;
+  animation: verse-progress-fill var(--verse-duration, 20s) linear forwards;
 }
 
 @keyframes verse-progress-fill {
