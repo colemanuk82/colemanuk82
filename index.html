@@ -1,127 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coleman</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: black;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    <meta name="theme-color" content="#1c1718">
+    <meta
+      name="description"
+      content="The Church of Colemantology is a warm, curious seaside parish in Bournemouth, Dorset, making room for wonder, good questions, and one another."
+    >
+    <title>Church of Colemantology | Bournemouth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header" id="top">
+        <div class="announcement-bar">
+          <div class="announcement-message">
+            <span class="announcement-sun" aria-hidden="true"></span>
+            <span>Open doors, open hearts, paws on the path</span>
+          </div>
+          <a href="#visit" class="announcement-link">Plan your visit <span aria-hidden="true">&#8594;</span></a>
+        </div>
 
-        #matrix {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+        <div class="nav-wrap">
+          <a class="brand" href="#top" aria-label="Church of Colemantology home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <path d="M12.5 19.5 17 9l7 7 7-7 4.5 10.5v9.25c0 5.1-5.05 8.75-11.5 8.75s-11.5-3.65-11.5-8.75V19.5Z" fill="currentColor" opacity=".16" />
+                <path d="M12.5 19.5 17 9l7 7 7-7 4.5 10.5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+                <path d="M14.5 22.5c0-3.7 4.25-6.75 9.5-6.75s9.5 3.05 9.5 6.75v6.25c0 4.7-4.25 8.1-9.5 8.1s-9.5-3.4-9.5-8.1v-6.25Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="20.25" cy="25.25" r="1.15" fill="currentColor" />
+                <circle cx="27.75" cy="25.25" r="1.15" fill="currentColor" />
+                <path d="m22 29 2 1.3 2-1.3M24 30.3v2.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.2" />
+              </svg>
+            </span>
+            <span class="brand-copy">
+              <span class="brand-overline">The Church of</span>
+              <span class="brand-name">Colemantology</span>
+            </span>
+          </a>
 
-        .matrix-char, .matrix-ghost {
-            position: absolute;
-            color: #00FF00;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-        }
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+            <span class="menu-toggle-label">Menu</span>
+            <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+          </button>
 
-        .matrix-ghost {
-            opacity: 0.6;
-            transition: opacity 1s linear;
-        }
+          <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+            <a class="nav-link active" href="#about">Our way</a>
+            <a class="nav-link" href="#gather">Gatherings</a>
+            <a class="nav-link" href="#visit">Visit</a>
+            <a class="nav-link nav-link-button" href="#notes">The vestry notes <span aria-hidden="true">&#8599;</span></a>
+          </nav>
+        </div>
+      </header>
 
-        .highlight {
-            color: #FFFF00;  /* Brighter color for emphasis */
-            font-size: 35px; /* Slightly larger font size */
-        }
-    </style>
-</head>
-<body>
-    <div id="matrix"></div>
+      <main id="main-content">
+        <section class="hero-section" id="about" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> A seaside parish for curious souls</p>
+            <h1 id="hero-title">Keep a little<br><em>wonder.</em></h1>
+            <p class="hero-intro">
+              The Church of Colemantology is a small, open-hearted community in Bournemouth, Dorset. We gather for good questions, quiet moments, and the kind of company that leaves you lighter than it found you.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#gather">Find your Sunday <span aria-hidden="true">&#8594;</span></a>
+              <a class="text-link" href="#way">Read our way <span aria-hidden="true">&#8599;</span></a>
+            </div>
+            <div class="hero-footnote">
+              <span class="footnote-rule" aria-hidden="true"></span>
+              <span>For believers, doubters, wanderers<br>and anyone who likes a good hymn.</span>
+            </div>
+          </div>
 
-    <script>
-        const matrixContainer = document.getElementById('matrix');
-        const columnSpacing = 40; // Increased spacing between columns
-        const columns = Math.floor(window.innerWidth / columnSpacing); // Use columnSpacing here
-        const chars = '';
-        const customText = "   C    O    L    E    M    A    N                         ";
-        const fallingChars = [];
-        const customTextColumns = new Set();
+          <div class="hero-art">
+            <div class="art-orbit orbit-one" aria-hidden="true"></div>
+            <div class="art-orbit orbit-two" aria-hidden="true"></div>
+            <div class="art-label art-label-top"><span>Est.</span><strong>2026</strong></div>
+            <figure class="hero-figure">
+              <div class="hero-image-wrap">
+                <img src="parishioner.png" alt="A black cat parishioner holding the Colemantology prayer book in church">
+                <div class="image-wash" aria-hidden="true"></div>
+              </div>
+              <figcaption>
+                <span>A parishioner in good standing</span>
+                <span class="caption-dots" aria-hidden="true">&#8226; &#8226; &#8226;</span>
+                <span>Colemantology, UK</span>
+              </figcaption>
+            </figure>
+            <div class="art-label art-label-side"><span>Stay</span><strong>curious</strong></div>
+            <span class="crosshair crosshair-a" aria-hidden="true"></span>
+            <span class="crosshair crosshair-b" aria-hidden="true"></span>
+          </div>
+        </section>
 
-        // Randomly select a few columns to display "COLEMAN"
-        while (customTextColumns.size < Math.floor(columns * 0.5)) { // 20% of columns dedicated to the name
-            customTextColumns.add(Math.floor(Math.random() * columns));
-        }
+        <section class="welcome-section" id="way" aria-labelledby="welcome-title">
+          <div class="section-heading">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> A note from the vestry</p>
+            <h2 id="welcome-title">The sacred is<br><em>closer than you think.</em></h2>
+          </div>
+          <div class="welcome-copy">
+            <p class="lead-copy">We believe a life of meaning can begin with something very small: a shared cup of tea, sunlight on the floor, a neighbour who needs carrying for a minute.</p>
+            <p>Our tradition is one of gentle attention. We look for the holy in the everyday and try not to take ourselves too seriously while we are doing it. There is room here for devotion and doubt, for laughter in the back row, and for coming exactly as you are.</p>
+            <a class="text-link dark-link" href="#parish">Meet the parish <span aria-hidden="true">&#8599;</span></a>
+          </div>
+        </section>
 
-        function createMatrix() {
-            for (let i = 0; i < columns; i++) {
-                let charElement = document.createElement('div');
-                charElement.classList.add('matrix-char');
-                matrixContainer.appendChild(charElement);
+        <section class="parish-gallery-section" id="parish" aria-labelledby="parish-title">
+          <div class="parish-gallery-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Faces of the parish</p>
+              <h2 id="parish-title">Company for<br><em>the long way round.</em></h2>
+            </div>
+            <p class="parish-gallery-intro">A parish has more than one kind of calling. Here are a few of ours: showing up, sitting close, and bringing enough warmth for everyone.</p>
+          </div>
+          <div class="parish-gallery-grid">
+            <figure class="parish-photo parish-photo-portrait">
+              <div class="parish-photo-frame">
+                <img src="2.png" alt="A black cat parishioner in a suit holding a prayer book">
+              </div>
+              <figcaption><span>02 / Sunday best</span><span>Come as you are</span></figcaption>
+            </figure>
+            <figure class="parish-photo parish-photo-group">
+              <div class="parish-photo-frame">
+                <img src="priests.png" alt="Black cat clergy gathered in the Colemantology chapel">
+              </div>
+              <figcaption><span>03 / The first synod</span><span>Many paws, one table</span></figcaption>
+            </figure>
+            <figure class="parish-photo parish-photo-portrait">
+              <div class="parish-photo-frame">
+                <img src="1.png" alt="A black cat parishioner at morning prayer">
+              </div>
+              <figcaption><span>04 / Morning prayer</span><span>Stillness before the day</span></figcaption>
+            </figure>
+            <figure class="parish-photo parish-photo-group">
+              <div class="parish-photo-frame">
+                <img src="tea.jpg" alt="A cup of tea shared after the service">
+              </div>
+              <figcaption><span>05 / The sacred cup</span><span>Tea solves most things</span></figcaption>
+            </figure>
+            <figure class="parish-photo parish-photo-portrait">
+              <div class="parish-photo-frame">
+                <img src="charity.jpg" alt="Parishioners gathered for a charity bake sale">
+              </div>
+              <figcaption><span>06 / The bake sale</span><span>Offerings of flour and sugar</span></figcaption>
+            </figure>
+            <figure class="parish-photo parish-photo-group">
+              <div class="parish-photo-frame">
+                <img src="fate.jpg" alt="The parish fete in full swing">
+              </div>
+              <figcaption><span>07 / The parish fete</span><span>Every table tells a story</span></figcaption>
+            </figure>
+          </div>
+        </section>
 
-                charElement.style.left = `${i * columnSpacing}px`; // Updated column spacing
-                charElement.style.top = `${Math.random() * window.innerHeight}px`;
+        <section class="principles-section" aria-labelledby="principles-title">
+          <div class="principles-intro">
+            <span class="section-number">01 / 03</span>
+            <h2 id="principles-title">Three things<br>we hold dear.</h2>
+            <p>Not rules. More like good intentions, written in the margin.</p>
+          </div>
+          <div class="principles-grid">
+            <article class="principle-card card-yellow">
+              <span class="principle-symbol" aria-hidden="true">&#10022;</span>
+              <span class="card-index">01</span>
+              <h3>Stay curious</h3>
+              <p>Questions are not interruptions to faith. They are how the conversation begins.</p>
+              <a href="#gather" aria-label="Learn more about staying curious">Explore <span aria-hidden="true">&#8599;</span></a>
+            </article>
+            <article class="principle-card card-blue">
+              <span class="principle-symbol principle-symbol-sun" aria-hidden="true">&#9678;</span>
+              <span class="card-index">02</span>
+              <h3>Make room</h3>
+              <p>There is always another chair, another story, and a little more kindness to give away.</p>
+              <a href="#visit" aria-label="Learn more about making room">Explore <span aria-hidden="true">&#8599;</span></a>
+            </article>
+            <article class="principle-card card-coral">
+              <span class="principle-symbol" aria-hidden="true">&#10047;</span>
+              <span class="card-index">03</span>
+              <h3>Leave lighter</h3>
+              <p>We come together not to escape the world, but to return to it with softer hands.</p>
+              <a href="#notes" aria-label="Learn more about leaving lighter">Explore <span aria-hidden="true">&#8599;</span></a>
+            </article>
+          </div>
+        </section>
 
-                fallingChars.push({
-                    element: charElement,
-                    speed: Math.random() * 10 + 5,
-                    charPosition: Math.floor(Math.random() * chars.length),
-                    isCustomText: customTextColumns.has(i) // Mark columns dedicated to "COLEMAN"
-                });
-            }
-        }
+        <section class="gather-section" id="gather" aria-labelledby="gather-title">
+          <div class="gather-aside">
+            <div class="small-cross" aria-hidden="true">&#10013;</div>
+            <p class="eyebrow light-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> The weekly rhythm</p>
+            <p class="aside-quote">"A good gathering should feel a little like finding the warm patch of sun."</p>
+            <span class="quote-byline">- The Second Book of Coleman, 4:12</span>
+          </div>
+          <div class="gather-content">
+            <p class="section-number light-number">02 / 03</p>
+            <h2 id="gather-title">Come as you are.<br><em>Stay for tea.</em></h2>
+            <p class="gather-intro">Each Sunday, we meet above the old bookshop on Charminster Road. There is singing, a short reflection, and a generous amount of tea. No prior knowledge required.</p>
+            <div class="gather-details">
+              <div class="gather-detail">
+                <span class="detail-label">Sunday gathering</span>
+                <strong>10:30 - 11:45</strong>
+                <span>Doors open at 10:10</span>
+              </div>
+              <div class="gather-detail">
+                <span class="detail-label">Midweek pause</span>
+                <strong>Wednesday, 18:30</strong>
+                <span>A quiet half-hour by candlelight</span>
+              </div>
+            </div>
+            <a class="button button-light" href="#visit">How to find us <span aria-hidden="true">&#8594;</span></a>
+          </div>
+        </section>
 
-        function updateMatrix() {
-            fallingChars.forEach(fallingChar => {
-                let charElement = fallingChar.element;
-                let speed = fallingChar.speed;
-                let currentTop = parseInt(charElement.style.top.replace('px', ''));
-                let newTop = currentTop + speed;
+        <section class="visit-section" id="visit" aria-labelledby="visit-title">
+          <div class="visit-copy">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Find the good room</p>
+            <h2 id="visit-title">The door is<br><em>always open.</em></h2>
+            <p class="lead-copy">You will find us in a bright little room between the high street and the sea. Look for the gold star in the window and the smell of something just out of the oven.</p>
+            <div class="address-block">
+              <span class="address-label">Our gathering place</span>
+              <address>Charminster Road<br>Bournemouth, BH8 8UE</address>
+              <a class="text-link dark-link" href="https://www.google.com/maps/search/?api=1&amp;query=37+Charminster+Road+Bournemouth+BH8+8UE" target="_blank" rel="noreferrer">Open in maps <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="map-card">
+            <div class="map-card-topline"><span>BH8</span><span>50.7352 N / 1.8426 W</span></div>
+            <div class="map-illustration" aria-hidden="true">
+              <span class="map-road road-one"></span>
+              <span class="map-road road-two"></span>
+              <span class="map-road road-three"></span>
+              <span class="map-road road-four"></span>
+              <span class="map-water"></span>
+              <span class="map-tree tree-one"></span>
+              <span class="map-tree tree-two"></span>
+              <span class="map-tree tree-three"></span>
+              <span class="map-pin"><i></i></span>
+              <span class="map-label label-charm">CHARMINSTER</span>
+              <span class="map-label label-sea">THE SEA</span>
+              <span class="map-label label-church">OUR ROOM</span>
+            </div>
+            <div class="map-card-bottomline"><span>Walk in welcome</span><span>Tea included</span></div>
+          </div>
+        </section>
 
-                if (newTop > window.innerHeight) {
-                    newTop = -20;
-                    fallingChar.charPosition = Math.floor(Math.random() * chars.length);
-                }
+        <section class="notes-section" id="notes" aria-labelledby="notes-title">
+          <div class="notes-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> From the vestry</p>
+              <h2 id="notes-title">Small notes for<br><em>the long way round.</em></h2>
+            </div>
+            <a class="text-link dark-link desktop-link" href="#mailing-list">Read the archive <span aria-hidden="true">&#8599;</span></a>
+          </div>
+          <div class="notes-grid">
+            <article class="note-card note-card-featured">
+              <div class="note-card-visual visual-star" aria-hidden="true"><span>&#10022;</span></div>
+              <div class="note-card-body">
+                <span class="note-meta">A reflection / 4 min read</span>
+                <h3>On the importance of looking up</h3>
+                <a href="#mailing-list">Read note <span aria-hidden="true">&#8594;</span></a>
+              </div>
+            </article>
+            <article class="note-card">
+              <div class="note-card-visual note-card-image">
+                <img src="Untitled.jpg" alt="A quiet moment of contemplation">
+              </div>
+              <div class="note-card-body">
+                <span class="note-meta">A practical theology</span>
+                <h3>The sacred art of putting the kettle on</h3>
+                <a href="#mailing-list">Read note <span aria-hidden="true">&#8594;</span></a>
+              </div>
+            </article>
+            <article class="note-card">
+              <div class="note-card-visual note-card-image">
+                <img src="Gemini_Generated_Image_d21bhwd21bhwd21b.png" alt="A reflective scene from the parish">
+              </div>
+              <div class="note-card-body">
+                <span class="note-meta">A walk by the water</span>
+                <h3>What the tide knows about returning</h3>
+                <a href="#mailing-list">Read note <span aria-hidden="true">&#8594;</span></a>
+              </div>
+            </article>
+          </div>
+          <a class="text-link dark-link mobile-link" href="#mailing-list">Read the archive <span aria-hidden="true">&#8599;</span></a>
+        </section>
 
-                // Create a ghost element at the previous position
-                let ghostElement = charElement.cloneNode(true);
-                ghostElement.classList.add('matrix-ghost');
-                ghostElement.style.top = `${currentTop}px`;
-                ghostElement.style.opacity = 0.6;
-                matrixContainer.appendChild(ghostElement);
+        <section class="mailing-section" id="mailing-list" aria-labelledby="mailing-title">
+          <div class="mailing-mark" aria-hidden="true">
+            <span class="mailing-ray ray-one"></span>
+            <span class="mailing-ray ray-two"></span>
+            <span class="mailing-ray ray-three"></span>
+            <span class="mailing-star">&#10022;</span>
+          </div>
+          <div class="mailing-copy">
+            <p class="eyebrow light-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> The Sunday letter</p>
+            <h2 id="mailing-title">A small light<br><em>in your inbox.</em></h2>
+            <p>Occasional notes from Bournemouth: a thought, a song, and something worth noticing.</p>
+          </div>
+          <form class="mailing-form" id="mailing-form">
+            <label for="email">Your email address</label>
+            <div class="form-row">
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              <button class="button button-light" type="submit">Join us <span aria-hidden="true">&#8594;</span></button>
+            </div>
+            <p class="form-note" id="form-note">No noise. Unsubscribe whenever you like.</p>
+          </form>
+        </section>
+      </main>
 
-                setTimeout(() => {
-                    ghostElement.style.opacity = 0;
-                    setTimeout(() => ghostElement.remove(), 1000);
-                }, 50);
-
-                // Display "COLEMAN" in specific columns
-                if (fallingChar.isCustomText) {
-                    charElement.classList.add('highlight'); // Apply highlight style
-                    charElement.textContent = customText[fallingChar.charPosition % customText.length];
-                    fallingChar.charPosition++;
-                } else {
-                    charElement.classList.remove('highlight');
-                    charElement.textContent = chars[fallingChar.charPosition];
-                    fallingChar.charPosition = (fallingChar.charPosition + 1) % chars.length;
-                }
-
-                charElement.style.top = `${newTop}px`;
-            });
-        }
-
-        function initMatrix() {
-            createMatrix();
-            setInterval(updateMatrix, 30);
-        }
-
-        document.addEventListener('DOMContentLoaded', initMatrix);
-    </script>
-</body>
+      <footer class="site-footer">
+        <div class="footer-main">
+          <a class="brand footer-brand" href="#top" aria-label="Church of Colemantology home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <path d="M12.5 19.5 17 9l7 7 7-7 4.5 10.5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+                <path d="M14.5 22.5c0-3.7 4.25-6.75 9.5-6.75s9.5 3.05 9.5 6.75v6.25c0 4.7-4.25 8.1-9.5 8.1s-9.5-3.4-9.5-8.1v-6.25Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="20.25" cy="25.25" r="1.15" fill="currentColor" />
+                <circle cx="27.75" cy="25.25" r="1.15" fill="currentColor" />
+              </svg>
+            </span>
+            <span class="brand-copy"><span class="brand-overline">The Church of</span><span class="brand-name">Colemantology</span></span>
+          </a>
+          <div class="footer-links">
+            <div><span class="footer-label">Explore</span><a href="#about">Our way</a><a href="#gather">Gatherings</a><a href="#notes">Vestry notes</a></div>
+            <div><span class="footer-label">Find us</span><a href="#visit">37 Charminster Road</a><a href="mailto:hello@colemantology.church">hello@colemantology.church</a><a href="#visit">Bournemouth, UK</a></div>
+          </div>
+        </div>
+        <div class="footer-bottom"><span>&copy; <span id="current-year">2026</span> Church of Colemantology</span><span>Made with patience in Bournemouth</span><a href="#top">Back to top &#8593;</a></div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
